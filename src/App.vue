@@ -26,12 +26,51 @@
      {{index}} - {{ obj.title }}
   </div>
 
+  <div>
+    <label>contrato</label> <br>
+    <input  
+      v-model="contract"
+      type="checkbox"
+    >
+    Aceita nossos termos <br>
+    {{ contract }}
+  </div>
+
+  <div>
+    <label>Your favorite colors</label> <br>
+    <input  
+      v-model="colors"
+      type="checkbox"
+      value="Amarelo"
+    >
+    Amarelo <br>
+
+    <input  
+      v-model="colors"
+      type="checkbox"
+      value="Azul"
+    >
+    Azul <br>
+    {{ colors }}
+  </div>
+  <div>
+    <button @click="onclick">
+      enviar
+    </button>
+  </div>
+
+  <div>
+    <h1> {{ fullName }} </h1>
+  </div>
+
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import TheHeader from './components/TheHeader.vue'
 
+
+ 
 export default {
   name: 'App',
   components: {
@@ -39,6 +78,10 @@ export default {
   },
   data() {
     return {
+      firstName: 'João',
+      lastName: 'Silva',
+      colors: [],
+      contract: false,
       classvar: 'title',
       todos: [
         {
@@ -73,7 +116,21 @@ export default {
         }
         ]    
     }
+  },
+
+  methods: {
+    onclick(){
+      console.log('clicou')
+    }
+  },
+
+  computed: {
+      fullName() {
+        return this.firstName + ' ' + this.lastName
+      
+      }
   }
+  
 
 }
 </script>
